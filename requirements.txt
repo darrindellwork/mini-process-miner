@@ -1,0 +1,5 @@
+streamlit
+pm4py
+pandas
+numpy
+python-graphviz
