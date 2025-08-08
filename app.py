@@ -1,5 +1,10 @@
-import streamlit as st
 import pandas as pd
+import shutil, importlib, streamlit as st
+st.write("Python OK. Checking deps…")
+st.write("pm4py import:", bool(importlib.util.find_spec("pm4py")))
+st.write("graphviz (pip) import:", bool(importlib.util.find_spec("graphviz")))
+st.write("dot in PATH:", shutil.which("dot"))
+
 
 # ----------------------------
 # Page setup
