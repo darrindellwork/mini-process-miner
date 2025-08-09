@@ -1,9 +1,15 @@
-import pandas as pd
-import shutil, importlib, streamlit as st
+import streamlit as st
+st.set_page_config(page_title="Mini Process Miner", layout="wide")
+
+# Now it's safe to use other Streamlit calls
+import shutil, importlib, import pandas as pd
+
 st.write("Python OK. Checking deps…")
 st.write("pm4py import:", bool(importlib.util.find_spec("pm4py")))
 st.write("graphviz (pip) import:", bool(importlib.util.find_spec("graphviz")))
 st.write("dot in PATH:", shutil.which("dot"))
+
+# ...rest of your app...
 
 
 # ----------------------------
