@@ -1,21 +1,24 @@
 import streamlit as st
+import shutil
+import importlib
+import pandas as pd
+
+# ----------------------------
+# Config
+# ----------------------------
 st.set_page_config(page_title="Mini Process Miner", layout="wide")
+DEBUG = True  # set to False to hide the env checks from users
 
-# Now it's safe to use other Streamlit calls
-import shutil, importlib, import pandas as pd
-
-st.write("Python OK. Checking deps…")
-st.write("pm4py import:", bool(importlib.util.find_spec("pm4py")))
-st.write("graphviz (pip) import:", bool(importlib.util.find_spec("graphviz")))
-st.write("dot in PATH:", shutil.which("dot"))
-
-# ...rest of your app...
-
+# Optional: quick environment/dependency check
+if DEBUG:
+    st.write("Python OK. Checking deps…")
+    st.write("pm4py import:", bool(importlib.util.find_spec("pm4py")))
+    st.write("graphviz (pip) import:", bool(importlib.util.find_spec("graphviz")))
+    st.write("dot in PATH:", shutil.which("dot"))
 
 # ----------------------------
 # Page setup
 # ----------------------------
-st.set_page_config(page_title="Mini Process Miner", layout="wide")
 st.title("Mini Process Miner (vibe-coded)")
 
 # Uploader with clear instructions
@@ -24,7 +27,11 @@ uploaded = st.file_uploader(
     type=["csv"],
     help="Use EXACT headers (lowercase): required → case_id, activity, timestamp; optional → column1, column2, column3."
 )
-st.caption("**Required columns: (Please make sure the headers in your uploaded event log have the EXACT same names as the required here: ** case_id, activity, timestamp  •  **Optional:** column1, column2, column3 (e.g., resource, team, location)  •  **Disclaimer:** This demo tool offers no guarantees regarding data security or accuracy; use at your own risk.")
+st.caption(
+    "**Required columns:** case_id, activity, timestamp  •  "
+    "**Optional:** column1, column2, column3 (e.g., resource, team, location)  •  "
+    "**Disclaimer:** This demo tool offers no guarantees regarding data security or accuracy; use at your own risk."
+)
 
 # ----------------------------
 # Helpers
@@ -338,7 +345,7 @@ if uploaded:
                 st.info(f"DFG visualization not available: {e}")
 
     except ModuleNotFoundError:
-        st.error("PM4Py not found. In Anaconda Prompt run: pip install pm4py graphviz and restart.")
+        st.error("PM4Py not found. Please ensure pm4py and graphviz are installed.")
     except Exception as e:
         st.warning(f"Could not render process map: {e}")
 
