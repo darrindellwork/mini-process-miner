@@ -27,11 +27,15 @@ uploaded = st.file_uploader(
     type=["csv"],
     help="Use EXACT headers (lowercase): required → case_id, activity, timestamp; optional → column1, column2, column3."
 )
+
 st.caption(
     "**Required columns:** case_id, activity, timestamp  •  "
     "**Optional:** column1, column2, column3 (e.g., resource, team, location)  •  "
-    "**Disclaimer:** This demo tool offers no guarantees regarding data security or accuracy; use at your own risk."
+    "Need a sample dataset? [Download a test CSV here](https://drive.google.com/drive/folders/1q0iqn5_FFz4EttLDl0zR09RQ3z4JsdDR)  •  "
+    "**Disclaimer:** This demo tool offers no guarantees regarding data security or accuracy; use at your own risk.  •  "
+    "Created by Dennis Arrindell, powered by [PM4Py](https://pm4py.fit.fraunhofer.de/), and 100% vibe-coded with ChatGPT."
 )
+
 
 # ----------------------------
 # Helpers
@@ -363,7 +367,7 @@ Created by **Dennis Arrindell** — creator of the best selling online course ab
 
 Inspired by the pioneering work of **Wil van der Aalst**, the “godfather of process mining.”  
 
-Powered by the **PM4Py** process mining library, created by **Sebastiaan J. van Zelst** and contributors.  
+Powered by the **PM4Py** process mining library, created by **Sebastiaan J. van Zelst** and contributors: https://pm4py.fit.fraunhofer.de/
 
 Built with Python and other open-source libraries (pandas, Streamlit, Graphviz, etc.).  
 
